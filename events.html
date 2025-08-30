@@ -1,3 +1,6 @@
+<!-- Events -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +10,74 @@
 </head>
 <body>
     <ul>
-        <li><img src="https://i.pinimg.com/474x/ec/a6/da/eca6da2e377514a38db858305a71a8d2.jpg" alt=""></li>
-        <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0_izubW5CR-ySEbO4Bps3L7zE27ggc323QFch51j4AHVr4qwlNBTE42I&s" alt="Sunflower"></li>
-        <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe0pQOJXoCPQz3Tt2CxALPhvOFLztPlhnTWXDADih-yF3IY1DKsd-z1Dg&s" alt="Lotus"></li>
+        <li id="Rose"><img src="https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt134818d279038650/6668df6434f6fb5cd48aac34/beautiful-flowers-rose.jpeg?q=70&width=150&auto=webp" alt=""></li>
+        <li id="Sunflower"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0_izubW5CR-ySEbO4Bps3L7zE27ggc323QFch51j4AHVr4qwlNBTE42I&s" alt="Sunflower"></li>
+        <li id="Lotus"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe0pQOJXoCPQz3Tt2CxALPhvOFLztPlhnTWXDADih-yF3IY1DKsd-z1Dg&s" alt="Lotus"></li>
          
     </ul>
 </body>
+<script>
+        document.getElementById('Sunflower').onclick = function(){
+            alert("Sunflower is clicked...");
+        }
+        document.getElementById('Rose').onclick = function(){
+            alert("Rose is clicked...");
+        }
+    
+
+        // EventListener
+        // The addEventListener() method lets you run a function whenever a chosen event happens on an element.
+        //example: element.addEventListener(event, function, useCapture(true/false)-defaults to false);
+
+
+        document.getElementById("Lotus").addEventListener('click',function(){
+            alert("The Lotus is clicked...")
+        })
+
+        //  When you use addEventListener(), JavaScript automatically passes an event object to your function.
+        //  This object gives you details about what happened (like which key was pressed, which element was clicked, mouse position, etc.)
+
+        document.getElementById("Lotus").addEventListener('click',function(e){
+           console.log(e); 
+
+           //common properties of the event object.--------------------------------------------------------
+
+           //type-The type of event (e.g., "click", "keydown", "mouseover")
+           // timestamp=The time (in ms) when the event was created (useful for measuring time differences)
+            // defaultPrevented- true if event.preventDefault() was called, otherwise false
+            // target-	The element that triggered the event (where it originated)
+            // currentTarget-	The element the event listener is attached to
+            // srcElement-	Same as target (old IE property, still works in some browsers)
+            // toElement-	For mouse events: the element the pointer moved to (used with mouseout)
+            // clientX-	Mouse X coordinate relative to the viewport (browser window)
+            // clientY-	Mouse Y coordinate relative to the viewport
+            // screenX-	Mouse X coordinate relative to the whole screen
+            // screenY-	Mouse Y coordinate relative to the whole screen
+            // altKey	true if the Alt key was pressed during the event
+            // ctrlKey	true if the Ctrl key was pressed
+            // shiftKey	true if the Shift key was pressed
+            // keyCode	Numeric code of the key pressed (deprecated, better use event.key)
+           
+        })
+        
+      //--------------------------------------------------------------------------------------------
+      //  What is Event Propagation?
+
+        // When an event happens (like a click), it doesn’t just stay on the element you clicked.
+        // It moves through the DOM tree in a specific order.
+        // This movement is called event propagation.
+
+        // 🔹 The 3 Phases of Event Propagation
+
+        // Capturing phase (top → down)
+        // Event goes from the root (document) down to the element.
+        // Example: Document → Body → Div → Button.
+
+        // Target phase
+        // Event reaches the actual element that was clicked/triggered.
+
+        // Bubbling phase (bottom → up)
+        // Event goes back up the DOM tree.
+        // Example: Button → Div → Body → Document.
+</script>
 </html>
