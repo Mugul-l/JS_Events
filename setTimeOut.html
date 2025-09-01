@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="first-div">
+        <p id="para1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam, obcaecati.</p>
+        <button id="btn-1">Stop</button>
+    </div>
+</body>
+<script>
+      
+       const ChangeMe=function(){
+         document.querySelector('#para1').innerHTML="Heyaa i am smruti pragyan Biswal";
+       }
+       const Change_Text= setTimeout(ChangeMe,3000);    //the text get changed after  3 secs 
+
+     document.querySelector('#btn-1').addEventListener('click',function(){
+         clearTimeout(Change_Text)      //If you click "Stop" before 3s → the timeout is cancelled, and "Stopped" gets added under the button.
+
+        let div=document.createElement('div')
+        div.innerHTML="Stopped"
+
+        document.querySelector('#first-div').appendChild(div);
+     })
+</script>
+</html>
