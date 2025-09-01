@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p id="para1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum expedita iusto ipsum totam aspernatur id quas laudantium repellat reprehenderit nisi!</p>
+        <button id="para1-btn">Para1</button>
+        <p id="para2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti, asperiores!</p>
+    </div>
+  
+     <ul>
+        <li id="Burger"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdb5VvlI7KFkpOOH7dt9ZAKMCd_Iof1p531w&s" ></li>
+        <li id="Sandwich"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxfyEMdCEh8epBW48z9dtegb04iYnMP7oj4Q&s"></li>
+        <li id="Biriyani"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgmWMj0HJevEuRkfwOgSSESA6lNLdzyqet0Q&s"  ></li>
+         
+    </ul>
+</body>
+<script>
+    //  What is Event Propagation?
+
+        // When an event happens (like a click), it doesn’t just stay on the element you clicked.
+        // It moves through the DOM tree in a specific order.
+        // This movement is called event propagation.
+
+        // 🔹 The 3 Phases of Event Propagation
+
+        // Capturing phase (top → down)
+        // Event goes from the root (document) down to the element.
+        // Example: Document → Body → Div → Button.
+
+        // Target phase
+        // Event reaches the actual element that was clicked/triggered.
+
+        // Bubbling phase (bottom → up)
+        // Event goes back up the DOM tree.
+        // Example: Button → Div → Body → Document.
+
+        document.getElementById('para1-btn').addEventListener('click',function(e){
+            console.log("Para1 is clicked...");
+            e.stopPropagation();        // will stop bubbling up
+            
+
+        })
+
+        //preventDefault() ----------------------------------------------------------
+        //It is a method available on the event object (e or event).
+        //It stops the default action that the browser normally does for an event.
+        //Common Uses
+        //    1- Prevent form submission refresh
+        //    2- Disable link navigation
+        //    3-Stop default key actions (like preventing arrow keys from scrolling).
+
+        document.querySelector('#Burger').addEventListener('click',function(e){
+            console.log(e.target.parentNode ); 
+            let removeIt=e.target.parentNode;
+            if(e.target.tagName === 'IMG'){     //items won't be deleted by clicking on the ul 
+                //removeIt.remove()    //Modern way. Directly removes the element (removeIt) from the DOM.  Equivalent to saying: “Hey element, delete yourself.”
+                removeIt.parentNode.removeChild(removeIt)    // Can also use this removeChild method Old-school way (used before .remove() existed).
+                                                            //It says: “Go to the parent of removeIt and ask it to delete removeIt as its child.”       
+                                                            
+                                                        }
+                                                    })
+        document.querySelector('#Biriyani').addEventListener('click',function(e){
+            console.log(e.target.parentNode ); 
+            let removeIt=e.target.parentNode;
+            removeIt.remove()           
+        })
+        document.querySelector('#Sandwich').addEventListener('click',function(e){
+            console.log(e.target.parentNode ); 
+            let removeIt=e.target.parentNode;
+             removeIt.remove()  
+               
+        })
+</script>
+</html>
