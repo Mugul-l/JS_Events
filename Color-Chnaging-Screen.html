@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      transition: background-color 0.6s ease;
+    }
+
+     h2 {
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+      color: #333;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      margin: 10px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    #start {
+      background: #4caf50;
+      color: white;
+    }
+
+    #stop {
+      background: #f44336;
+      color: white;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Click Start to change the Color Of your Screen ✨</h2>
+        <button class="btn" id="start">start</button>
+        <button class="btn" id="stop">stop</button>
+    </div>
+</body>
+<script>
+    const randomColor= function(){
+    const hex="0123456789ABCDEF"
+    let color='#'
+    for(let i=0;i<6;i++){
+        color+=hex[(Math.floor(Math.random()*16))]
+    }
+    return color;
+};
+let intervalId;
+const startChangingColor=function(){
+    intervalId=setInterval(changeBgcolor,1000)
+    function changeBgcolor(){
+
+        document.body.style.backgroundColor = randomColor();
+    }
+}
+const stopChangingColor=function(){
+    clearInterval(intervalId)
+    document.body.style.backgroundColor = randomColor();
+}
+
+document.querySelector('#start').addEventListener('click',startChangingColor )
+document.querySelector('#stop').addEventListener('click',stopChangingColor)
+</script>
+</html>
