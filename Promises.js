@@ -62,23 +62,80 @@
 
 //Multiple then() blocks
 
-new Promise((resolve,reject)=>{
+// new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//         let error=false;
+//         if(!error){
+//             resolve("The promise is resolved.");
+//         }
+//         else{
+//             reject("The promise is rejected.");
+//         }
+//     },1000)
+// }).then((msg)=>{
+//     console.log(msg);
+    
+// }).catch((err)=>{
+//     console.log(err);
+    
+// }).finally(()=>{
+//     console.log("The process is completed now.");
+    
+// })
+
+const newPromise = new Promise((resolve,reject)=>{
     setTimeout(()=>{
-        let error=false;
-        if(!error){
-            resolve("The promise is resolved.");
+        let err=true;
+        if(!err){
+            console.log({couse:"javascript",pwd:"1234"});
+            
         }
         else{
-            reject("The promise is rejected.");
+            console.log("There is Error in the code...");
+            
         }
     },1000)
-}).then((msg)=>{
-    console.log(msg);
+})
+
+//try catch
+
+async function consumeNewPromise(){
+    try{
+
+        const response=await newPromise
+        console.log(response);
+    }
+    catch(err){
+        console.log(err);
+        
+    }
+}
+//fetch
+
+// async function getAllUsers(){
+//     try {
+//         let response=await fetch ('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json')
+//         const data=await response.json()    //this process takes time so we have to await this
+//         console.log(data);
+//     } catch (error) {
+//         console.log("Err: ",error);
+        
+//     }
     
-}).catch((err)=>{
-    console.log(err);
+// }
+// getAllUsers()
+
+// above code using .then .catach -> thenable/mutiple then()s
+
+fetch('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json')
+.then((response)=>{
+    return response.json()
+})
+.then((data)=>{
+    console.log(data);
     
-}).finally(()=>{
-    console.log("The process is completed now.");
+})
+.catch((err)=>{
+    console.log("Err: ",err);
     
 })
