@@ -60,7 +60,7 @@
 
 //---------------------------------------------------------------------------------------
 
-//Multiple then()
+//Multiple then() blocks
 
 new Promise((resolve,reject)=>{
     setTimeout(()=>{
