@@ -1,4 +1,4 @@
-//A Promise in JavaScript is an object that represents the result of an asynchronous task that will finish in the future (either successfully or with an error).
+//A Promise in JavaScript is an object that represents the result of an asynchronous operation/task that will finish in the future (either successfully or with an error).
 
 // It has 3 states:
 
@@ -110,32 +110,3 @@ async function consumeNewPromise(){
         
     }
 }
-//fetch
-
-// async function getAllUsers(){
-//     try {
-//         let response=await fetch ('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json')
-//         const data=await response.json()    //this process takes time so we have to await this
-//         console.log(data);
-//     } catch (error) {
-//         console.log("Err: ",error);
-        
-//     }
-    
-// }
-// getAllUsers()
-
-// above code using .then .catach -> thenable/mutiple then()s
-
-fetch('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json')
-.then((response)=>{
-    return response.json()
-})
-.then((data)=>{
-    console.log(data);
-    
-})
-.catch((err)=>{
-    console.log("Err: ",err);
-    
-})
