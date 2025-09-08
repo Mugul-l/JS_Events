@@ -1,6 +1,6 @@
 // What is Prototype?
 
-// In JavaScript, every function has a prototype property.
+// In JavaScript, every function has a prototype property.which is either null or reference to another object.
 
 // That prototype is used when creating objects with the new keyword.
 
